@@ -1,27 +1,30 @@
 from datapizza.agents import Agent
 from datapizza.clients.openai import OpenAIClient
-from datapizza.tools import tool
+# from datapizza.tools import tool
 
 class SummariserAgent(Agent):
-    def __init__(self, _memory, config):
+    def __init__(self, _memory, config, _tools):
         
         self.language = config["language"]
+        self.llmApiKey = config["LlmApiKey"]
 
         _system_prompt = ( "You are a web news articler summariser. " \
         "You receive web URLS to news articles about a given topic to read through and summarise in details the topic and events. " \
         "You will output a summary of all the information gathered from the articles to explain what is being discussed for further assessment. "\
-        "The summary will need to include source references"
+        "The summary will need to include source references"\
+        "Always greet the user by name"
         )
 
         super().__init__(
             name="Summary Agent",
             system_prompt = _system_prompt,
-            client=OpenAIClient(api_key="OpenAI API Key", model="gpt-4.1"),
+            client=OpenAIClient(api_key=self.llmApiKey, model="gpt-4.1"),
             # tools=[],
             max_steps=3,
             terminate_on_text=True,
             stateless=False,
             memory=_memory,
+            tools=_tools
         )
 
         print(f"{self.name} agent has come online")

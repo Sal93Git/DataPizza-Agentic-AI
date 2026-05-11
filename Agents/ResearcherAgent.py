@@ -1,6 +1,6 @@
 from datapizza.agents import Agent
 from datapizza.clients.openai import OpenAIClient
-from datapizza.tools import tool
+# from datapizza.tools import tool
 
 class ResearcherAgent(Agent):
     def __init__(self, _memory, config):
@@ -8,6 +8,7 @@ class ResearcherAgent(Agent):
         self.maxNumberOfArticles = config["MaxNumberOfArticles"]
         self.country = config["country"]
         self.topic = config["topic"]
+        self.llmApiKey = config["LlmApiKey"]
 
         _system_prompt = ( "You are a web news article researcher" \
         "You scrape the internet to find the most up to date news articles from reliable sources" \
@@ -18,7 +19,7 @@ class ResearcherAgent(Agent):
         super().__init__(
             name="ResearcherAgent",
             system_prompt = _system_prompt,
-            client=OpenAIClient(api_key="OpenAI API Key", model="gpt-4.1-mini"),
+            client=OpenAIClient(api_key=self.llmApiKey, model="gpt-4.1-mini"),
             # tools=[],
             max_steps=3,
             terminate_on_text=True,

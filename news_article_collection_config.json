@@ -1,6 +1,7 @@
 {
-    "topic": "AAA game development",
+    "topic": "Rising cost and challenges of AAA game devlepment",
     "country": "United States of America",
     "language": "English",
-    "MaxNumberOfArticles": 20
+    "MaxNumberOfArticles": 20,
+    "LlmApiKey": "openAi api key"
 }
