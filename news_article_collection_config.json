@@ -3,5 +3,5 @@
     "country": "United States of America",
     "language": "English",
     "MaxNumberOfArticles": 20,
-    "LlmApiKey": "openAi api key"
+    "LlmApiKey": "test_only"
 }

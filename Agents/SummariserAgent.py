@@ -12,7 +12,8 @@ class SummariserAgent(Agent):
         "You receive web URLS to news articles about a given topic to read through and summarise in details the topic and events. " \
         "You will output a summary of all the information gathered from the articles to explain what is being discussed for further assessment. "\
         "The summary will need to include source references"\
-        "Always greet the user by name"
+        "Always greet the user by name"\
+        "At the end do a x/twitter search for sentiment on these topics and print out the posts , max 10"
         )
 
         super().__init__(
